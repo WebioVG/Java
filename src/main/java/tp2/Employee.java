@@ -37,7 +37,7 @@ public abstract class Employee {
      * @return A string indicating what has been done.
      */
     public String work(float hoursNumber) {
-        float paycheckAmount = salary.calculatePayckeckAmount(hoursNumber);
+        float paycheckAmount = salary.calculatePaycheckAmount(hoursNumber);
 
         return
             "The employee worked for " +
