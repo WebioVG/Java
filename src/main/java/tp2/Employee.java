@@ -1,5 +1,8 @@
 package tp2;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public abstract class Employee {
     private Salary salary;
     private Identity identity;
@@ -25,7 +28,7 @@ public abstract class Employee {
      * @param address The new address.
      */
     public void move(Address address) {
-        identity.address = address;
+        identity.setAddress(address);
     }
 
     /**
@@ -58,6 +61,14 @@ public abstract class Employee {
      * @param percentage The percentage to increase the salary with.
      */
     public void giveARaise(int percentage) {
-        salary.hourlyRate *= 1 + percentage / 100;
+        // Calculate the new hourly rate
+        float newHourlyRate = salary.getHourlyRate() * (1 + (float) percentage / 100);
+
+        // Set two decimals
+        BigDecimal bigDecimal = new BigDecimal(newHourlyRate).setScale(2, RoundingMode.HALF_UP);
+        newHourlyRate = bigDecimal.floatValue();
+
+        // Set the new hourly rate
+        salary.setHourlyRate(newHourlyRate);
     }
 }

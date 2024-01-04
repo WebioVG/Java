@@ -14,7 +14,7 @@ public class Identity {
     }
 
     public Address getAddress() {
-        return adress;
+        return address;
     }
 
     public void setFirstName(String firstName) {
